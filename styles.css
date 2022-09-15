@@ -1,0 +1,22 @@
+body {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(212, 255, 244, 255) 0%, rgba(65, 184, 131, 255) 90.1%);
+    background-attachment: fixed;
+}
+
+.container {
+    text-align: justify;
+    width: 600px;
+    height: 900px;
+    background-color: rgb(243, 243, 243);
+    margin-right: 30px;
+}
+
+.main {
+    margin: auto;
+    height: 2000px;
+    display: flex;
+}
+
+.title {
+    text-align: center;
+}
