@@ -4,16 +4,13 @@ body {
 }
 
 .container {
-    text-align: justify;
-    width: 600px;
-    height: 900px;
+    width: 400px;
+    height: fit-content;
+    padding-bottom: 20px;
     background-color: rgb(243, 243, 243);
-    margin-right: 30px;
 }
 
 .main {
-    margin: auto;
-    height: 2000px;
     display: flex;
 }
 
@@ -55,5 +52,13 @@ li {
     display: flex;
     border: solid 2px;
     border-color: black;
-    margin: 10px;
+    margin: 2px;
+}
+
+.taskfield {
+    margin-left: 50px;
+}
+
+ul {
+    padding: 0;
 }
