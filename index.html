@@ -19,47 +19,40 @@
         </div>
 
     </div>
+
     <script>
         let app = Vue.createApp({})
         app.component('tasklist', {
             template: `
             <div class='container'>
-                <div class="title">
-                    <h1>Todo</h1>
+                <div class="taskfield">
+                    <form name="taskform" v-on:submit.prevent="addTask()">
+                        <input type="text"  v-model="taskname"><button class="addbutton" type='submit'>Add</button><button class="clearbutton" @click="clear()">Clear complited</button>
+                    </form>
                 </div>
-            <ul>
-            <li 
-            v-for = "(task,i) in tasks"
-            :key = "i"
-            >   
-                <p class='taskname'>{{task.name}}</p>
-                <button @click="markTask(i,0)" class="change">Mark</button>
-                <button @click="deleteTask(i,0)" class="remove">Remove</button>
-            </li>
-            </ul> 
+                <ul>
+                    <li 
+                    v-for = "(task,i) in tasks"
+                    :key = "i"
+                    >   
+                        <p class='taskname'>{{task.name}}</p>
+                        <button @click="markTask(i,0)" class="change">Mark</button>
+                        <button @click="deleteTask(i,0)" class="remove">Remove</button>
+                    </li>
+                </ul> 
 
-            <div class="taskfield">
-            <form name="taskform" v-on:submit.prevent="addTask()">
-            <input type="text" v-model="taskname"><button type='submit'>Add</button><button @click="clear()">Clear complited</button>
-            </form>
-            </div>
-            <div class='container'>
-                <div class="title">
-                    <h1>Complited</h1>
-                </div>
-            <ul>
-            <complitedlist 
-            v-for = "(task,i) in complitedtasks"
-                        :key="i"
-                        :taskname = "task.name"
-            />
-            </ul>
-            <div class="taskfield">
-            </div>
-            </div>
-            </div>
-            
 
+                    <div class="title">
+                        <hr>
+                    </div>
+                <ul>
+                    <complitedlist 
+                    v-for = "(task,i) in complitedtasks"
+                                :key="i"
+                                :taskname = "task.name"
+                    />
+                </ul>
+            </div>
             `,
             methods: {
                 show: function() {
@@ -85,13 +78,18 @@
                     this.complitedtasks = []
                 },
                 addTask() {
-                    this.tasks.push({
-                        name: this.taskname
-                    });
+                    if (this.taskname != null && this.taskname.replace(/\s+/g, '') != '') {
+                        this.tasks.push({
+                            name: this.taskname
+                        })
+                        this.taskname = null
+
+                    };
                 }
             },
             data() {
                 return {
+                    taskname: null,
                     tasks: [{
                         name: 'Покушац',
                     }, {
