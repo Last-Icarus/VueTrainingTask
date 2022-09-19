@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <div id="app" v-cloak>
         <div class="main">
             <tasklist />
@@ -24,38 +25,38 @@
         let app = Vue.createApp({})
         app.component('tasklist', {
             template: `
+            <sidebar />
+
             <div class='container'>
+                <button class='testbtn' @click=test()>TEST</button>
                 <div class="taskfield">
                     <form name="taskform" v-on:submit.prevent="addTask()">
-                        <input type="text"  v-model="taskname"><button class="addbutton" type='submit'>Add</button><button class="clearbutton" @click="clear()">Clear complited</button>
+                        <input type="text"  v-model="taskname"><button class="addbtn" type='submit'>Add</button><button class="clearbtn" @click="clear()">Clear complited</button>
                     </form>
                 </div>
-                <ul>
+                
+                <!-- <transition-group tag="ul" name='list' class="placeholderkey"> -->
                     <li 
-                    v-for = "(task,i) in tasks"
-                    :key = "i"
-                    >   
-                        <p class='taskname'>{{task.name}}</p>
-                        <button @click="markTask(i,0)" class="change">Mark</button>
-                        <button @click="deleteTask(i,0)" class="remove">Remove</button>
+                        v-for = "(task,i) in tasks"
+                        :key = "i"
+                        >   
+                            <p class='taskname'>{{task.name}}</p>
+                            <button @click="markTask(i,0)" class="change">Done</button>
+                            <button @click="deleteTask(i,0)" class="remove">Remove</button>
                     </li>
-                </ul> 
-
-
-                    <div class="title">
-                        <hr>
-                    </div>
-                <ul>
+                    <hr>
                     <complitedlist 
                     v-for = "(task,i) in complitedtasks"
                                 :key="i"
                                 :taskname = "task.name"
                     />
-                </ul>
+                <!-- </transition-group> -->
+                
             </div>
             `,
             methods: {
-                show: function() {
+                // devtool func
+                test: function() {
                     console.log(this.tasks)
                     console.log(this.complitedtasks)
                     console.log(this)
@@ -113,6 +114,7 @@
                 <p class='taskname'>{{taskname}}</p>
                 <button @click="deleteTask(i,0)" class="remove">Remove</button>
             </li>
+
             `,
             props: ['taskname'],
             methods: {
@@ -121,6 +123,26 @@
                 },
             },
 
+        })
+        app.component('sidebar', {
+            template: `
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a>
+                <a href="#">Option #1</a>
+                <a href="#">Option #2</a>
+                <a href="#">Option #3</a>
+                <a href="#">Option #4</a>
+            </div>
+            <span style="font-size:30px;cursor:pointer" @click="openNav()">&#9776; open</span>
+            `,
+            methods: {
+                openNav: function() {
+                    document.getElementById("mySidenav").style.width = "250px";
+                },
+                closeNav: function() {
+                    document.getElementById("mySidenav").style.width = "0";
+                }
+            }
         })
         app.mount('#app')
     </script>

@@ -1,15 +1,26 @@
 body {
-    background-image: url(/Landscape-Color.jpg);
     background-image: radial-gradient( circle farthest-corner at 10% 20%, rgba(212, 255, 244, 255) 0%, rgba(65, 184, 131, 255) 90.1%);
     background-attachment: fixed;
 }
 
+div {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+input {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
 .container {
-    border-radius: 8px;
+    border-radius: 10px;
     margin: auto;
     backdrop-filter: blur(6px);
     margin-top: 30px;
-    width: 400px;
+    width: 1000px;
     height: fit-content;
     padding-bottom: 20px;
     background-color: rgba(243, 243, 243, 0.8);
@@ -31,7 +42,7 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 40px;
     cursor: pointer;
 }
 
@@ -43,22 +54,26 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 40px;
     cursor: pointer;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .taskname {
+    padding: 20px;
     margin: auto;
     overflow: auto
 }
 
 li {
+    font-size: 40px;
     display: flex;
     box-shadow: 0px 0px 3px black;
     border-radius: 8px;
     margin: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 ul {
@@ -74,13 +89,14 @@ ul {
 }
 
 .taskfield input {
+    font-size: 40px;
     border: 0;
     margin: 0;
     padding: 0;
     height: 100%;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
-    padding-left: 5px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding-left: 10px;
 }
 
 textarea:focus,
@@ -88,25 +104,82 @@ input:focus {
     outline: none;
 }
 
-.addbutton {
-    height: 16px;
+.addbtn {
+    font-size: 40px;
     border: 0px;
 }
 
-.addbutton:hover {
-    background-color: #4CAF50;
-    color: white;
-    box-shadow: inset 2px 2px 2px;
+.addbtn:hover {
+    /* background-color: #4CAF50;
+    color: white; */
+    box-shadow: inset 0px 0px 3px;
 }
 
-.clearbutton {
-    height: 16px;
-    border: 0px;
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
+.clearbtn {
+    border: 200px;
+    font-size: 40px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.clearbutton:hover {
-    background-color: #4CAF50;
-    color: white;
+.clearbtn:hover {
+    /* background-color: #e26b51;
+    color: white; */
+    box-shadow: inset 0px 0px 3px;
+}
+
+hr {
+    height: 5px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(243, 243, 243, 0.8);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #2a2a2a;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.list-enter-from {
+    transform: translateX(-2000px);
+}
+
+.list-leave-to {
+    transform: translateX(-2000px);
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+    transition: all 1s ease;
+}
+
+.list-leave-active {
+    position: absolute;
 }
